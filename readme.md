@@ -33,3 +33,13 @@ Para que este ejemplo funcione correctamente, es necesario que el LCD 1602 cuent
 <p align="center">
   <img src="./imgs/pcf8574-serial-port-módulo-i2c-spi-lcd-interfaz-arduino.jpg" alt="LCD1602 con interfaz I2C" width="480">
 </p>
+
+
+
+### Conexión del Circuito
+
+En este ejemplo, se utilizan los pines 21 (SDA) y 22 (SCL) del ESP32 para establecer la comunicación con el display. Ten en cuenta que la ubicación física de estos pines puede variar según el modelo de placa ESP32 que estés utilizando.
+
+<p align="center">
+  <img src="./imgs/conexion.png" alt="Conexión de LCD1602 con interfaz I2C al ESP32" width="480">
+</p>
