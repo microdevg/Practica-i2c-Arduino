@@ -1,7 +1,8 @@
 #include <Wire.h>
+// PINES POR DEFECTO SDA 21, SCL 22
 
-const int I2C_SDA = 9;
-const int I2C_SCL = 13;
+const int I2C_SDA = 21;
+const int I2C_SCL = 22;
 const uint32_t I2C_FREQ = 100000; // 100 kHz
 const uint8_t SLAVE_ADDR = 0x3C;  // Cambia según tu dispositivo esclavo
 
