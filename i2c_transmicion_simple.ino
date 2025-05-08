@@ -1,31 +1,35 @@
-#include <Wire.h>
 
-const int I2C_SDA = 9;
-const int I2C_SCL = 13;
-const uint32_t I2C_FREQ = 100000; // 100 kHz
-const uint8_t SLAVE_ADDR = 0x3C;  // Cambia según tu dispositivo esclavo
 
+// PINES POR DEFECTO SDA 21, SCL 22
 int contador = 0;
 
+
+#include <LiquidCrystal_I2C.h>
+
+#include  <Wire.h>
+
+
+LiquidCrystal_I2C lcd(0x27,  16, 2);
+
 void setup() {
-  Serial.begin(115200);
   
-  // Inicializa I2C con pines personalizados
-  Wire.begin(I2C_SDA, I2C_SCL, I2C_FREQ);
-  Serial.println("I2C inicializado con SDA=9, SCL=13 a 100kHz.");
+  //initialize lcd screen
+  lcd.init();
+  Wire.setPins(9, 13);
+  // turn on the backlight
+  lcd.backlight();
 }
-
 void loop() {
-  char buffer[32];  // Ajusta el tamaño si necesitas más espacio
-  snprintf(buffer, sizeof(buffer), "contador = %d", contador);
-
-  Wire.beginTransmission(SLAVE_ADDR);
-  Wire.write((uint8_t*)buffer, strlen(buffer));
-  Wire.endTransmission();
-
-  Serial.println(buffer);  // Imprime en Serial lo enviado
-
-  contador++;
-  delay(1000);  // Espera 1 segundo entre envíos
+  //wait  for a second
+  delay(1000);
+  // tell the screen to write on the top row
+  lcd.setCursor(0,0);
+  // tell the screen to write “hello, from” on the top  row
+  lcd.print("Hello, From");
+  // tell the screen to write on the bottom  row
+  lcd.setCursor(0,1);
+  // tell the screen to write “Arduino_uno_guy”  on the bottom row
+  // you can change whats in the quotes to be what you want  it to be!
+ lcd.print("Arduino_uno_guy");
+  
 }
-
